@@ -1,6 +1,6 @@
 {
   "name": "@beam-australia/mui-tus-avatar",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "andrewmclagan",
   "license": "MIT",
   "publishConfig": {
@@ -19,7 +19,7 @@
     "storybook": "start-storybook -p 9001",
     "predeploy": "build-storybook -c .storybook -o .out",
     "deploy": "storybook-to-ghpages",
-    "preversion": "yarn build && yarn test",
+    "preversion": "yarn build",
     "postversion": "git push --tags && git push"
   },
   "peerDependencies": {
