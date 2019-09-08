@@ -69,7 +69,7 @@ const AvatarDialog = ({ croppable, open, toggle, onSave, aspect }) => {
                 color="primary"
                 className={classes.helper}
               >
-                Drag to crop your image, or just click save.
+                Drag to crop your image and then save.
               </Typography>
             </React.Fragment>
           )}
