@@ -1,59 +1,65 @@
-import React, { useState } from "react";
+import React from "react";
 import Image from "components/Image";
 import Dialog from "components/Dialog";
 import upload from "lib/upload";
 
-const Avatar = ({
-  src,
-  defaultSrc,
-  alt,
-  className,
-  onChange,
-  endpoint,
-  aspect,
-  size,
-  width,
-  height,
-  rounded,
-  croppable,
-  uploadable
-}) => {
-  const [open, setOpen] = useState(false);
-  const [image, setImage] = useState(src ? src : defaultSrc);
-  const toggleDialog = () => setOpen(!open);
-  const updateImage = async blob => {
-    let fileUrl = "";
-    window.URL.revokeObjectURL(fileUrl);
-    fileUrl = window.URL.createObjectURL(blob);
-    setImage(fileUrl);
-    const url = await upload(blob, endpoint);
-    setImage(url);
-    onChange(url);
-  }
-  return (
-    <React.Fragment>
-      <Image
-        src={image}
-        alt={alt}
-        onClick={toggleDialog}
-        className={className}
-        size={size}
-        rounded={rounded}
-        width={width}
-        height={height}
-      />
-      {uploadable && (
-        <Dialog
-          open={open}
-          croppable={croppable}
-          toggle={toggleDialog}
-          aspect={aspect}
-          onSave={updateImage}
+class Avatar extends React.PureComponent {
+  state = {
+    open: false,
+    image: this.props.src ? this.props.src : this.props.defaultSrc
+  };
+
+  toggleDialog = () => {
+    this.setState({ open: !this.state.open });
+  };
+
+  updateImage = async blob => {
+    let image = "";
+    window.URL.revokeObjectURL(image);
+    image = window.URL.createObjectURL(blob);
+    this.setState({ image });
+    const url = await upload(blob, this.props.endpoint);
+    this.setState({ image: url });
+    this.props.onChange(url);
+  };
+
+  render() {
+    const {
+      alt,
+      className,
+      aspect,
+      size,
+      width,
+      height,
+      rounded,
+      croppable,
+      uploadable
+    } = this.props;
+    return (
+      <React.Fragment>
+        <Image
+          src={image}
+          alt={alt}
+          onClick={toggleDialog}
+          className={className}
+          size={size}
+          rounded={rounded}
+          width={width}
+          height={height}
         />
-      )}
-    </React.Fragment>
-  );
-};
+        {uploadable && (
+          <Dialog
+            open={open}
+            croppable={croppable}
+            toggle={toggleDialog}
+            aspect={aspect}
+            onSave={updateImage}
+          />
+        )}
+      </React.Fragment>
+    );
+  }
+}
 
 Avatar.defaultProps = {
   src: "",

@@ -22,7 +22,8 @@ const useStyles = makeStyles({
     }
   },
   image: {
-    width: "100%"
+    width: 'auto',
+    maxWidth: '100%'
   }
 });
 
