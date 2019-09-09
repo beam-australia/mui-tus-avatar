@@ -1,6 +1,5 @@
 import babel from "rollup-plugin-babel";
 import builtins from 'rollup-plugin-node-builtins';
-import includePaths from "rollup-plugin-includepaths";
 import commonjs from "rollup-plugin-commonjs";
 import external from "rollup-plugin-peer-deps-external";
 import postcss from "rollup-plugin-postcss";
@@ -34,9 +33,6 @@ export default {
     svgr(),
     babel({
       exclude: "node_modules/**"
-    }),
-    includePaths({
-      paths: ["src"]
     }),
     resolve({
       browser: true

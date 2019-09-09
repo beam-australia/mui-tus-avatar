@@ -14,12 +14,13 @@
     "dist"
   ],
   "scripts": {
+    "test": "cross-env CI=1 react-scripts test --env=jsdom",
     "build": "rollup -c",
     "start": "rollup -c -w",
     "storybook": "start-storybook -p 9001",
     "predeploy": "build-storybook -c .storybook -o .out",
     "deploy": "storybook-to-ghpages",
-    "preversion": "yarn build",
+    "preversion": "yarn build && yarn test",
     "postversion": "git push --tags && git push"
   },
   "peerDependencies": {

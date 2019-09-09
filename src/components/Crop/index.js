@@ -1,6 +1,6 @@
 import React from "react";
 import ReactCrop from "react-image-crop";
-import getCroppedImage from "lib/getCroppedImage";
+import getCroppedImage from "../../lib/getCroppedImage";
 import "react-image-crop/dist/ReactCrop.css";
 
 class Crop extends React.PureComponent {

@@ -6,8 +6,8 @@ import DialogContent from "@material-ui/core/DialogContent";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/styles";
-import FileInput from "components/FileInput";
-import Crop from "components/Crop";
+import FileInput from "../FileInput";
+import Crop from "../Crop";
 
 const useStyles = makeStyles({
   root: {

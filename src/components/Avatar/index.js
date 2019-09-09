@@ -1,7 +1,7 @@
 import React from "react";
-import Image from "components/Image";
-import Dialog from "components/Dialog";
-import upload from "lib/upload";
+import Image from "../Image";
+import Dialog from "../Dialog";
+import upload from "../../lib/upload";
 
 class Avatar extends React.PureComponent {
   state = {
@@ -41,7 +41,7 @@ class Avatar extends React.PureComponent {
         <Image
           src={image}
           alt={alt}
-          onClick={toggleDialog}
+          onClick={this.toggleDialog}
           className={className}
           size={size}
           rounded={rounded}
@@ -51,10 +51,10 @@ class Avatar extends React.PureComponent {
         {uploadable && (
           <Dialog
             open={open}
-            croppable={croppable}
-            toggle={toggleDialog}
             aspect={aspect}
-            onSave={updateImage}
+            croppable={croppable}
+            toggle={this.toggleDialog}
+            onSave={this.updateImage}
           />
         )}
       </React.Fragment>
