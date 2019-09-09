@@ -35,6 +35,7 @@ class Avatar extends React.PureComponent {
       croppable,
       uploadable
     } = this.props;
+    const { image, open } = this.state;
     return (
       <React.Fragment>
         <Image
